@@ -1,4 +1,4 @@
-The folder contains all the training I've done so far, divided into their types. Within each folder there are subfolders containing:
+The repositorie contains all the training I've done so far, divided into their types. Within each folder there are subfolders containing:
 1. training folder on Udemy with a link to the training,
 2. folder with my corrections that I made after finishing the training in order to consolidate knowledge (if I made such projects)
 3. folder with commercial projects (if such projects were implemented)
