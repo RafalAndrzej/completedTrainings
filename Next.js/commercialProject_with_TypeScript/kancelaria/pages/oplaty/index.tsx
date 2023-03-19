@@ -63,12 +63,12 @@ export const getStaticProps: GetStaticProps<{
    blurImg: string;
 }> = async () => {
    const pageContent = await oplatyGetAll();
-   const blurImg = getPlaiceholder('/img/pagesPictures/oplaty/oplaty-top.jpg', { size: 30 });
+   const blurImg = await getPlaiceholder('/img/pagesPictures/oplaty/oplaty-top.jpg', { size: 30 });
 
    return {
       props: {
          pageContent,
-         blurImg: (await blurImg).base64,
+         blurImg: blurImg.base64,
       },
    };
 };

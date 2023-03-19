@@ -3,6 +3,9 @@ export interface DataStructureCzytelnia {
    pageHref: string;
    title: string;
    imgSrc: string;
-   blurImg: string;
    text: string[];
+}
+
+export interface BlurDataStructureCzytelnia extends DataStructureCzytelnia {
+   blurImg: string;
 }

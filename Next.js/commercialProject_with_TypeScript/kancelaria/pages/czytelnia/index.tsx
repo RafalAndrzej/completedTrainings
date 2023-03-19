@@ -2,37 +2,30 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import React from 'react';
 
-import { getPlaiceholder } from 'plaiceholder';
-
 import AllEvents from '../../components/pageContent/pageSections/czytelnia/AllEvents';
 
 import { czytelniaGetAll } from '../../helpers/api-util';
-import { DataStructureCzytelnia } from '../../types/czytelniaTypes';
+import { BlurDataStructureCzytelnia } from '../../types/czytelniaTypes';
+
+import { base64 } from '../../helpers/api-util';
 
 const Czytelnia = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-   return <AllEvents pageContent={props.pageContent} />;
+   return <AllEvents pageContent={props.contentWithBlur} />;
 };
 
-export const getStaticProps: GetStaticProps<{ pageContent: DataStructureCzytelnia[] }> = async () => {
+export const getStaticProps: GetStaticProps<{ contentWithBlur: BlurDataStructureCzytelnia[] }> = async () => {
    const pageContent = await czytelniaGetAll();
 
-   // console.log(pageContent);
-
-   const base64 = async function (src: string) {
-      const { base64 } = await getPlaiceholder(src);
-      return base64;
-   };
-
-   pageContent.map((el) => {
-      base64(el.imgSrc).then((src) => {
-         console.log({ ...el, blurImg: src });
-         const moje = { ...el, blurImg: src };
-         return moje;
+   const contentWithBlur = [];
+   for (const element of pageContent) {
+      contentWithBlur.push({
+         ...element,
+         blurImg: await base64(element.imgSrc),
       });
-   });
+   }
 
    return {
-      props: { pageContent },
+      props: { contentWithBlur },
    };
 };
 

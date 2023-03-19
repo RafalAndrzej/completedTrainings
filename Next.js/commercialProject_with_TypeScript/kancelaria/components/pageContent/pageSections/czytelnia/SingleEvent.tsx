@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 import classes from './SingleEvent.module.css';
 
-import { DataStructureCzytelnia } from '../../../../types/czytelniaTypes';
+import { BlurDataStructureCzytelnia } from '../../../../types/czytelniaTypes';
 
-const SingleEvent: React.FC<{ content: DataStructureCzytelnia }> = (props) => {
+const SingleEvent: React.FC<{ content: BlurDataStructureCzytelnia }> = (props) => {
    return (
       <Link className={classes.event} href={`/czytelnia/${props.content.pageHref}`}>
          <div className={classes.box}>
@@ -14,9 +14,8 @@ const SingleEvent: React.FC<{ content: DataStructureCzytelnia }> = (props) => {
                fill
                alt={props.content.title}
                sizes="(min-width: 700px) 50vw, 100vw"
-               // placeholder="blur"
-               // blurDataURL={props.blurImage}
-            ></Image>
+               placeholder="blur"
+               blurDataURL={props.content.blurImg}></Image>
          </div>
          <h3>{props.content.title}</h3>
       </Link>

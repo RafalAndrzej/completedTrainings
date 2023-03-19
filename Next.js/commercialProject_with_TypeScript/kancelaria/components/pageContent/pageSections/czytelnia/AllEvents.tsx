@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import CzytelniaContext from '../../../../context/czytelniaContext';
-import { DataStructureCzytelnia } from '../../../../types/czytelniaTypes';
+import { BlurDataStructureCzytelnia } from '../../../../types/czytelniaTypes';
 
 import BoxWithLine from '../../BoxWithLine';
 import pageClasses from './index.module.css';
@@ -10,7 +10,7 @@ import SingleEvent from './SingleEvent';
 import classes from '../pageSectionsText.module.css';
 
 const AllEvents: React.FC<{
-   pageContent: DataStructureCzytelnia[];
+   pageContent: BlurDataStructureCzytelnia[];
 }> = (props) => {
    const czytelniaCtx = useContext(CzytelniaContext);
 

@@ -1,6 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+import { getPlaiceholder } from 'plaiceholder';
+
 import { DataStructure } from '../types/globalTypes';
 
 async function getAllData() {
@@ -41,9 +43,14 @@ export async function rodoGetAll() {
 
    return allData.rodo;
 }
-
+// Kontakt
 export async function kontaktGetAll() {
    const allData = await getAllData();
 
    return allData.kontakt;
 }
+// Blur image
+export const base64 = async function (src: string) {
+   const { base64 } = await getPlaiceholder(src, { size: 20 });
+   return base64;
+};
